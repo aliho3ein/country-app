@@ -1,0 +1,104 @@
+@import "./_variable.scss";
+
+.backToMain {
+  all: unset;
+  padding: 8px 20px;
+  background-color: var(--secondaryColor);
+  box-shadow: 0 0 8px 1px var(--shadowColor);
+  font-size: 1.2rem;
+  justify-self: flex-start;
+  position: absolute;
+  left: 80px;
+  top: 100px;
+  cursor: pointer;
+
+  &::before {
+    content: "\f060";
+    font: var(--fa-font-solid);
+    margin-right: 5px;
+    font-size: 1rem;
+  }
+  &:hover {
+    filter: brightness(1.1);
+  }
+
+  @media screen and (min-width: $xl-size) {
+    top: 150px;
+    left: 150px;
+  }
+}
+
+.container {
+  min-height: calc(100vh - 300px);
+  width: 100vw;
+  margin-block: 50px;
+  padding-inline: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5%;
+
+  .flag {
+    width: 30%;
+    min-width: 300px;
+    aspect-ratio: 1.3;
+    background: center / contain var(--img) no-repeat;
+  }
+
+  .info {
+    width: 700px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    justify-content: center;
+    //
+
+    @media screen and (min-width: $xl-size) {
+      justify-content: start;
+    }
+
+    p {
+      line-height: 1.9rem;
+      font-weight: 600;
+
+      span {
+        font-weight: 300;
+      }
+    }
+
+    h2 {
+      width: 100%;
+      font-weight: 700;
+      font-size: 1.8rem;
+      text-align: center;
+
+      @media screen and (min-width: $xl-size) {
+        text-align: start;
+      }
+    }
+
+    .borders {
+      width: 100%;
+      text-align: center;
+
+      span {
+        padding: 3px 5px;
+        margin-left: 5px;
+        font-size: 0.9rem;
+        border: 1px solid var(--shadowColor);
+      }
+
+      @media screen and (min-width: $xl-size) {
+        text-align: start;
+      }
+    }
+
+    .leftSide {
+      min-width: 300px;
+    }
+    .rightSide {
+      min-width: 300px;
+    }
+  }
+}

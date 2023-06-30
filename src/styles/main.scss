@@ -1,0 +1,128 @@
+@import url("https://fonts.googleapis.com/css2?family=Ysabeau+Infant:wght@300;400;600;700&display=swap");
+@import "./variable";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Ysabeau Infant", sans-serif;
+}
+
+body {
+  background-color: var(--primaryColor);
+  color: var(--textColor);
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+header {
+  height: 80px;
+  width: 100vw;
+  box-shadow: 0 0 9px 1px var(--shadowColor);
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding-inline: 20px;
+  background-color: var(--secondaryColor);
+  user-select: none;
+
+  @media screen and (min-width: $sm-size) {
+    padding-inline: 50px;
+  }
+
+  h1 {
+    font-size: 1.2rem;
+
+    @media screen and (min-width: $sm-size) {
+      font-size: 2rem;
+    }
+  }
+
+  .darkMode {
+    margin-left: auto;
+    cursor: pointer;
+
+    &::before {
+      content: "\f186";
+      font: var(--fa-font-solid);
+      margin-right: 5px;
+    }
+  }
+}
+
+.searchArea {
+  height: 120px;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  padding-inline: 50px;
+  position: relative;
+  justify-content: space-between;
+  margin-top: 20px;
+
+  @media screen and (min-width: $md-size) {
+    flex-direction: row;
+    margin-top: 0px;
+  }
+
+  .icon {
+    position: absolute;
+    cursor: pointer;
+    color: #777;
+    transform: translate(20px, 17px);
+  }
+
+  input {
+    max-width: 450px;
+    width: 25%;
+    min-width: 300px;
+    border: none;
+    outline: none;
+    box-shadow: 0 0 10px 1px var(--shadowColor);
+    padding: 15px 8px 15px 50px;
+    color: var(--textColor);
+    background-color: var(--secondaryColor);
+  }
+
+  select {
+    box-shadow: 0 0 10px 1px var(--shadowColor);
+    padding: 15px 30px;
+    border: none;
+    color: var(--textColor);
+    background-color: var(--secondaryColor);
+  }
+}
+
+main {
+  width: 100vw;
+  min-height: calc(100vh - 285px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 50px;
+}
+
+footer {
+  width: 100vw;
+  display: grid;
+  place-items: center;
+  padding-block: 40px 20px;
+  user-select: none;
+  font-size: 0.8rem;
+
+  a {
+    color: var(--textColor);
+    margin-left: 8px;
+
+    &:after {
+      content: "\f35d";
+      font: var(--fa-font-solid);
+      font-size: 0.5rem;
+      vertical-align: super;
+      margin-left: 1px;
+    }
+  }
+}

@@ -6,6 +6,7 @@ import { Route, Routes } from "react-router-dom";
 import CountryList from "../components/countryList";
 import DarkMode from "../components/darkMode";
 import Country from "./[name]";
+import Loading from "../components/loading";
 
 const App = () => {
   const [state, setState] = useState<countryType[]>([]);
@@ -21,7 +22,7 @@ const App = () => {
   }
 
   if (isLoading) {
-    return <h2>Loading...</h2>;
+    return <Loading />;
   }
 
   return (

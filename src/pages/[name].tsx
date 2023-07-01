@@ -2,6 +2,7 @@ import axios from "axios";
 import { useQuery } from "react-query";
 import { useNavigate, useParams } from "react-router-dom";
 import styles from "./../styles/detailCard.module.scss";
+import Loading from "../components/loading";
 
 const Country = () => {
   const { name } = useParams();
@@ -19,12 +20,12 @@ const Country = () => {
       });
   });
 
-  if (isLoading) {
-    return <h2>Loading...</h2>;
+  if (data) {
+    return <Loading />;
   }
 
   if (isError) {
-    return <h2>Error</h2>;
+    return <h2>Error 404</h2>;
   }
 
   return (

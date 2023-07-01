@@ -20,7 +20,7 @@ const Country = () => {
       });
   });
 
-  if (data) {
+  if (isLoading) {
     return <Loading />;
   }
 

@@ -1,8 +1,8 @@
-import { FC, useEffect, useState } from "react";
-import CountryCard from "./card";
+import { FC, Suspense, lazy, useEffect, useState } from "react";
 import { countryType } from "../model/countryType";
 import { useLocation } from "react-router-dom";
 import SearchBox from "./searchBox";
+const CountryCard = lazy(() => import("./card"));
 
 const CountryList: FC<{ state: countryType[] }> = ({ state }) => {
   const location = useLocation();
@@ -10,7 +10,7 @@ const CountryList: FC<{ state: countryType[] }> = ({ state }) => {
   const region = searchParams.get("region") || "";
   const name = searchParams.get("name") || "";
 
-  const [countriesList, setCountriesList] = useState<any>();
+  const [countriesList, setCountriesList] = useState<JSX.Element[]>();
 
   useEffect(() => {
     filterList(name, region);
@@ -24,7 +24,11 @@ const CountryList: FC<{ state: countryType[] }> = ({ state }) => {
 
   const createList = () => {
     const newList = state.map((country: countryType, index: number) => {
-      return <CountryCard key={index} data={country} />;
+      return (
+        <Suspense key={index} fallback={<h1>Loading...</h1>}>
+          <CountryCard data={country} />
+        </Suspense>
+      );
     });
 
     setCountriesList(newList);
@@ -49,7 +53,11 @@ const CountryList: FC<{ state: countryType[] }> = ({ state }) => {
     });
 
     const newList = result.map((country: countryType, index: number) => {
-      return <CountryCard key={index} data={country} />;
+      return (
+        <Suspense key={index} fallback={<h1>Loading...</h1>}>
+          <CountryCard data={country} />
+        </Suspense>
+      );
     });
 
     setCountriesList(newList);

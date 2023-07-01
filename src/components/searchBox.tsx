@@ -13,7 +13,11 @@ const SearchBox = () => {
   }, [filter]);
 
   const redirect = () => {
-    nav(`/?name=${filter.name}&region=${filter.region}`);
+    nav(
+      `/?name=${filter.name}&region=${
+        filter.region === "all" ? "" : filter.region
+      }`
+    );
   };
 
   return (
@@ -31,7 +35,7 @@ const SearchBox = () => {
         name="region"
         onChange={(e) => setFilter({ ...filter, region: e.target.value })}
       >
-        <option value="">World</option>
+        <option value="all">World</option>
         <option value="Africa">Africa</option>
         <option value="Americas">Americas</option>
         <option value="Asia">Asia</option>
